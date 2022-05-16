@@ -1,0 +1,26 @@
+{
+	"name": "template-plotly-ts",
+	"version": "1.0.0",
+	"description": "",
+	"type": "commonjs",
+	"scripts": {
+		"start": "concurrently npm:watch-*",
+		"build": "concurrently npm:build-* & npm run build:add",
+		"build-css": "sass --no-source-map ./src/styles.scss ./public/styles.css",
+		"watch-css": "sass --watch --no-source-map ./src/styles.scss ./public/styles.css",
+		"build-js": "tsc -p ./",
+		"watch-js": "tsc --watch -p ./",
+		"build:add": "node ./scripts/additional-build-step.js",
+		"watch-add": "node ./scripts/additional-watch-step.js"
+	},
+	"devDependencies": {
+		"@types/node": "^17.0.34",
+		"@types/plotly.js-dist-min": "^2.3.0",
+		"concurrently": "^7.2.0",
+		"sass": "^1.50.1",
+		"typescript": "^4.6.4"
+	},
+	"dependencies": {
+		"plotly.js-dist-min": "^2.11.1"
+	}
+}

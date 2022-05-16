@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		"module": "None",
+		// "esModuleInterop": true,
+		"target": "es2021",
+		"moduleResolution": "node",
+		"paths": {
+			"data": ["./public/data.js"]
+			// "plotly.js-dist-min": ["./public/plotly.min.js"]
+		},
+		// "baseUrl": ".",
+		"outDir": "public",
+		"importsNotUsedAsValues": "error",
+		// "allowSyntheticDefaultImports": true,
+		// "isolatedModules": true,
+		"strict": true,
+		// "noEmit": true,
+		// "skipLibCheck": true,
+		// "forceConsistentCasingInFileNames": true,
+		// "resolveJsonModule": true,
+		// "useDefineForClassFields": true
+	},
+	"include": [
+		"src/main.ts"
+	],
+	"exclude": [
+		"src/data.ts",
+		"src/types.ts"
+	]
+}

@@ -1,6 +1,5 @@
 import * as Plotly from "plotly.js-dist-min";
-import {allData} from "data";
-import "./styles.scss";
+import {allData} from "./dataBidon";
 
 
 function main(): void {
