@@ -1,7 +1,17 @@
-import type {AllData} from "./types";
+import type {MyData} from "./types";
 
-export const allData: AllData = {
-	x: [0,1,2,3,4,5,6,7,8,9,10],
-	y: [1,7,2,9,4,5,3,8,5,6,11]
+export const allData: MyData = {
+	forPlot1: {
+		x: [0,1,1],
+		y: [0,1,-1]
+	},
+	forPlot2: {
+		x: [0,1,2,3,3,0,3],
+		y: [0,1,1,0,-1,-3,-3]
+	},
+	forPlot3: {
+		x: [0,1,1,0,1,1,0],
+		y: [1,1,0,0,0,-1,-1]
+	}
 };
 
