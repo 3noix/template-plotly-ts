@@ -21,6 +21,7 @@
 		"webpack-cli": "^4.9.2"
 	},
 	"dependencies": {
+		"golden-layout": "^2.5.0",
 		"plotly.js-dist-min": "^2.11.1"
 	}
 }
