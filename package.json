@@ -2,23 +2,23 @@
 	"name": "template-plotly-ts",
 	"version": "1.0.0",
 	"description": "",
-	"type": "commonjs",
 	"scripts": {
-		"start": "concurrently npm:watch-*",
-		"build": "concurrently npm:build-* & npm run build:add",
-		"build-css": "sass --no-source-map ./src/styles.scss ./public/styles.css",
-		"watch-css": "sass --watch --no-source-map ./src/styles.scss ./public/styles.css",
-		"build-js": "tsc -p ./",
-		"watch-js": "tsc --watch -p ./",
-		"build:add": "node ./scripts/additional-build-step.js",
-		"watch-add": "node ./scripts/additional-watch-step.js"
+		"start": "npm run webpack-watch",
+		"build": "npm run webpack-prod",
+		"webpack-dev": "webpack --mode development",
+		"webpack-watch": "webpack --mode development --watch",
+		"webpack-prod": "webpack --mode production --devtool hidden-source-map"
 	},
 	"devDependencies": {
-		"@types/node": "^17.0.34",
 		"@types/plotly.js-dist-min": "^2.3.0",
-		"concurrently": "^7.2.0",
+		"@types/webpack": "^5.28.0",
+		"css-loader": "^6.7.1",
 		"sass": "^1.50.1",
-		"typescript": "^4.6.4"
+		"sass-loader": "^13.0.0",
+		"style-loader": "^3.3.1",
+		"ts-loader": "^9.3.0",
+		"webpack": "^5.72.1",
+		"webpack-cli": "^4.9.2"
 	},
 	"dependencies": {
 		"plotly.js-dist-min": "^2.11.1"

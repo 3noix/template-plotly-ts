@@ -1,4 +1,4 @@
-export type MyData = {
+export type Data = {
 	forPlot1: xyData;
 	forPlot2: xyData;
 	forPlot3: xyData;

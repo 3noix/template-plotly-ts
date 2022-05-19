@@ -17,15 +17,26 @@ You can easily create `data.js` directly with R code:
 library(rjson)
 library(stringr)
 
-data = list("x"=0:10, "y"=0:10)
-str = str_replace_all(toJSON(data), "\"NA\"", "null")
-str = str_c("const allData = ",str,";\n")
-write(str, file="data.js")
+data = list(
+	"forPlot1"=list("x"=c(0,1,1), "y"=c(0,1,-1)),
+	"forPlot2"=list("x"=c(0,1,2,3,3,0,3), "y"=c(0,1,1,0,-1,-3,-3)),
+	"forPlot3"=list("x"=c(0,1,1,0,1,1,0), "y"=c(1,1,0,0,0,-1,-1))
+)
+
+dataToJavascript = function(data) {
+	str = "!function(e,l){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=l():\"function\"==typeof define&&define.amd?define([],l):\"object\"==typeof exports?exports.data=l():e.data=l()}(self,(()=>(()=>{\"use strict\";var e={d:(l,n)=>{for(var d in n)e.o(n,d)&&!e.o(l,d)&&Object.defineProperty(l,d,{enumerable:!0,get:n[d]})},o:(e,l)=>Object.prototype.hasOwnProperty.call(e,l),r:e=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})}},l={};e.r(l),e.d(l,{default:()=>n});\n\nconst n = "
+
+	str = str_c(str, str_replace_all(toJSON(data), "\"NA\"", "null"))
+	str = str_c(str, ";\n\nreturn l})()));\n")
+	return(str)
+}
+
+write(dataToJavascript(data), file="data.js")
 ```
 
 # Using the npm scripts and Live Server extension
 
-When you will be modifying the project, you will certainly want to see the results quickly. You can do that by running the command `npm start` in the terminal. This way whenever you modify a .ts file or the .scss file in the `src` folder, the corresponding .js and .css files will be generated automatically generated in the `public` folder.
+When you will be modifying the project, you will certainly want to see the results quickly. You can do that by running the command `npm start` in the terminal. This way whenever you modify a .ts or .scss file in the `src` folder, the corresponding index.js will be regenerated automatically in the `public` folder.
 
 But if you don't want to press F5 in your web browser each time after that, you can use the extension "Live Server": it will refresh the page each time one of the source file changed. Install the extension then right click on `index.html` and choose `Open with Live Server`.
 
@@ -50,23 +61,17 @@ export type AllData = {
 	}
 };
 ```
-- update `dataBidon.ts`: it must has the same structure as `data.js` but the smaller it is the better. You can for example use empty arrays. The values will not be used, only `data.js` will be used. For example:
+- update `node_modules/data.ts`: it must has the same structure as `data.js` but the smaller it is the better. You can for example use empty arrays. These values will not be used, only `data.js` will be used. For example:
 ```typescript
-import type {AllData} from "./types";
+import type {Data} from "../types";
 
-export const allData: AllData = {
-	byYearHisto: {
-		year: [];
-		nbFlights: [];
-	},
-	scatterAltMach: {
-		maxAlt: [];
-		maxMach: [];
-	}
+const data: Data = {
+	forPlot1: {x: [], y: []},
+	forPlot2: {x: [], y: []},
+	forPlot3: {x: [], y: []}
 };
+
+export default data;
+
 ```
 - update `index.html`, `main.ts` and `styles.scss` to do exactly what you want for the plots. In `style.scss` you can write just standard CSS or use SASS features.
-
-# Miscellaneous
-
-If you import other files into `main.ts`, you should see an undesired "require" line on the generated `main.js`. To remove it you will have to edit the function "modifyMain" in `scripts/functions.js`.

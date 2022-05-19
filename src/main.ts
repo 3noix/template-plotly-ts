@@ -1,5 +1,6 @@
 import * as Plotly from "plotly.js-dist-min";
-import {allData} from "./dataBidon";
+import data from "data";
+import "./styles.scss";
 
 
 function main(): void {
@@ -12,8 +13,8 @@ function main(): void {
 
 	const data1: Partial<Plotly.PlotData> = {
 		type: "scatter",
-		x: allData.forPlot1.x,
-		y: allData.forPlot1.y,
+		x: data.forPlot1.x,
+		y: data.forPlot1.y,
 		mode: "lines+markers",
 		hoverinfo: "text",
 		marker: {color: "#ff0000"}
@@ -21,8 +22,8 @@ function main(): void {
 
 	const data2: Partial<Plotly.PlotData> = {
 		type: "scatter",
-		x: allData.forPlot2.x,
-		y: allData.forPlot2.y,
+		x: data.forPlot2.x,
+		y: data.forPlot2.y,
 		mode: "lines+markers",
 		hoverinfo: "text",
 		marker: {color: "#00ff00"}
@@ -30,8 +31,8 @@ function main(): void {
 
 	const data3: Partial<Plotly.PlotData> = {
 		type: "scatter",
-		x: allData.forPlot3.x,
-		y: allData.forPlot3.y,
+		x: data.forPlot3.x,
+		y: data.forPlot3.y,
 		mode: "lines+markers",
 		hoverinfo: "text",
 		marker: {color: "#0000ff"}
