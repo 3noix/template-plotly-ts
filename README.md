@@ -1,6 +1,9 @@
 # Concept
 
-This repository is a template for a project whose aim is to generate a standalone files (html, css, js) which displays plots just like in a dashboard. The data is fully contained in one of the js files and can be generated from R. This template uses plotly.js to do the plots.
+This repository is a template for a project whose aim is to generate a standalone files (html, css, js) which displays plots just like in a dashboard. The data is fully contained in one of the js files and can be generated from R.
+
+Hereafter is a screenshot of the result of this demo which uses [Plotly.js](https://plotly.com/javascript/) and [Golden Layout](https://golden-layout.com/). The plots can be resized and moved inside the window with drag and drop.
+![Screenshot](./img-for-readme/result.png)
 
 # Getting started
 
@@ -10,9 +13,7 @@ Download this template, and unzip it if it is zipped. Open a terminal and go to 
 
 # Generate data.js from R
 
-In the example, data.js only contains 2 vectors, "x" and "y". In a real project you would have more data, with a nested structure.
-
-You can easily create `data.js` directly with R code:
+In this demo, `data.js` is really lightweight and its structure is simple. In a real project it should be heavier and the structure more complex. You can easily create `data.js` directly with R code:
 ```R
 library(rjson)
 library(stringr)
@@ -44,10 +45,10 @@ Once done, press Cltr+C in the terminal and stop Live Server by clicking on the 
 
 If you just want to generate the output files without "watching for the files to change", you can simply run the command `npm run build`.
 
-# Modify the template
+# Adapt it to your needs
 
 Here are the first steps to adapt the template to your needs:
-- generate the new data.js file from R and put it in the `public` folder
+- generate the new `data.js` file from R and put it in the `public` folder
 - update `types.ts` so that it matches the structure of your data. For example:
 ```typescript
 export type Data = {
@@ -74,4 +75,4 @@ const data: Data = {
 export default data;
 
 ```
-- update `index.html`, `main.ts` and `styles.scss` to do exactly what you want for the plots. In `style.scss` you can write just standard CSS or use SASS features.
+- update `index.html`, `styles.scss` and `the Typescript files` to do exactly what you want for the plots. In `style.scss` you can write just standard CSS or use SASS features.
