@@ -50,15 +50,15 @@ Here are the first steps to adapt the template to your needs:
 - generate the new data.js file from R and put it in the `public` folder
 - update `types.ts` so that it matches the structure of your data. For example:
 ```typescript
-export type AllData = {
-	byYearHisto: {
-		year: number[];
-		nbFlights: number[];
-	},
-	scatterAltMach: {
-		maxAlt: number[];
-		maxMach: number[];
-	}
+export type Data = {
+	forPlot1: xyData;
+	forPlot2: xyData;
+	forPlot3: xyData;
+};
+
+export type xyData = {
+	x: number[];
+	y: number[];
 };
 ```
 - update `node_modules/data.ts`: it must has the same structure as `data.js` but the smaller it is the better. You can for example use empty arrays. These values will not be used, only `data.js` will be used. For example:
