@@ -1,6 +1,6 @@
-import * as Plotly from "plotly.js-dist-min";
 import data from "data";
 import "./styles.scss";
+import scatterPlot from "./scatterPlot";
 
 
 function main(): void {
@@ -11,45 +11,27 @@ function main(): void {
 	if (eltPlot2 == null) {return;}
 	if (eltPlot3 == null) {return;}
 
-	const data1: Partial<Plotly.PlotData> = {
-		type: "scatter",
-		x: data.forPlot1.x,
-		y: data.forPlot1.y,
-		mode: "lines+markers",
-		hoverinfo: "text",
-		marker: {color: "#ff0000"}
-	};
 
-	const data2: Partial<Plotly.PlotData> = {
-		type: "scatter",
-		x: data.forPlot2.x,
-		y: data.forPlot2.y,
-		mode: "lines+markers",
-		hoverinfo: "text",
-		marker: {color: "#00ff00"}
-	};
+	// @2: DO PLOTS
+	const plot1 = scatterPlot(eltPlot1);
+	const plot2 = scatterPlot(eltPlot2);
+	const plot3 = scatterPlot(eltPlot3);
+	plot1.react(data.forPlot1, "#ff0000");
+	plot2.react(data.forPlot2, "#00ff00");
+	plot3.react(data.forPlot3, "#0000ff");
 
-	const data3: Partial<Plotly.PlotData> = {
-		type: "scatter",
-		x: data.forPlot3.x,
-		y: data.forPlot3.y,
-		mode: "lines+markers",
-		hoverinfo: "text",
-		marker: {color: "#0000ff"}
-	};
-	
-	const layout: Partial<Plotly.Layout> = {
-		title: "Just a dumb title",
-		xaxis: {title: "X axis title"},
-		yaxis: {title: "Y axis title"},
-		margin: {t: 50, b: 60, l: 70, r: 40} // 100,80,80,80 by default
-	};
-	
-	const config: Partial<Plotly.Config> = {responsive: true};
 
-	Plotly.react(eltPlot1, [data1], layout, config);
-	Plotly.react(eltPlot2, [data2], layout, config);
-	Plotly.react(eltPlot3, [data3], layout, config);
+	// @2: ACTIVATE RESIZING
+	// // only useful if you use Golden Layout
+	// const observer = new ResizeObserver(entries => {
+	// 	plot1.relayout();
+	// 	plot2.relayout();
+	// 	plot3.relayout();
+	// });
+
+	// observer.observe(eltPlot1);
+	// observer.observe(eltPlot2);
+	// observer.observe(eltPlot3);
 }
 
 main();
