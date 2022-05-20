@@ -3,8 +3,6 @@ import type {xyData} from "./types";
 
 
 export default function scatterPlot(htmlElt: HTMLElement | null) {
-	const config: Partial<Plotly.Config> = {responsive: true};
-
 	// we will update x and y of plotData in the "react" function
 	let plotData: Partial<Plotly.PlotData> = {
 		type: "scatter",
@@ -12,7 +10,9 @@ export default function scatterPlot(htmlElt: HTMLElement | null) {
 		hoverinfo: "text"
 	};
 
-	// const as here the layout does not depends on the x and y values
+	// as const because here the layout does not depends on the x and y values
+	const config: Partial<Plotly.Config> = {responsive: true};
+
 	const layout: Partial<Plotly.Layout> = {
 		title: "Just a dumb title",
 		xaxis: {title: "X axis title"},
