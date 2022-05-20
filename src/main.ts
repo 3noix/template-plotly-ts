@@ -16,22 +16,9 @@ function main(): void {
 	const plot1 = scatterPlot(eltPlot1);
 	const plot2 = scatterPlot(eltPlot2);
 	const plot3 = scatterPlot(eltPlot3);
-	plot1.react(data.forPlot1, "#ff0000");
-	plot2.react(data.forPlot2, "#00ff00");
-	plot3.react(data.forPlot3, "#0000ff");
-
-
-	// @2: ACTIVATE RESIZING
-	// // only useful if you use Golden Layout
-	// const observer = new ResizeObserver(entries => {
-	// 	plot1.relayout();
-	// 	plot2.relayout();
-	// 	plot3.relayout();
-	// });
-
-	// observer.observe(eltPlot1);
-	// observer.observe(eltPlot2);
-	// observer.observe(eltPlot3);
+	plot1.update(data.forPlot1, "#ff0000");
+	plot2.update(data.forPlot2, "#00ff00");
+	plot3.update(data.forPlot3, "#0000ff");
 }
 
 main();
