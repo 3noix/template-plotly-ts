@@ -1,4 +1,3 @@
-import data from "data";
 import "./styles.scss";
 import scatterPlot from "./scatterPlot";
 import {ComponentContainer, GoldenLayout, JsonValue} from "golden-layout";
@@ -54,6 +53,7 @@ function main(): void {
 			container.layoutManager.resizeWithContainerAutomatically = true;
 			const div = document.createElement("div");
 			div.id = state as string;
+			div.textContent = "a";
 			container.element.appendChild(div);
 	});
 
@@ -68,22 +68,13 @@ function main(): void {
 	if (eltPlot2 == null) {return;}
 	if (eltPlot3 == null) {return;}
 
-
-	// @2: DO PLOTS
-	const plot1 = scatterPlot(eltPlot1);
-	const plot2 = scatterPlot(eltPlot2);
-	const plot3 = scatterPlot(eltPlot3);
-	plot1.react(data.forPlot1, "#ff0000");
-	plot2.react(data.forPlot2, "#00ff00");
-	plot3.react(data.forPlot3, "#0000ff");
-
-
-	// @2: ACTIVATE RESIZING
-	// only useful if you use Golden Layout
+	let i = 1;
 	const observer = new ResizeObserver(entries => {
-		plot1.relayout();
-		plot2.relayout();
-		plot3.relayout();
+		eltPlot1.textContent = `${eltPlot1.offsetWidth}x${eltPlot1.offsetHeight}`;
+		eltPlot2.textContent = `${eltPlot2.offsetWidth}x${eltPlot2.offsetHeight}`;
+		eltPlot3.textContent = `${eltPlot3.offsetWidth}x${eltPlot3.offsetHeight}`;
+		console.log(`Resize #${i}`);
+		i++;
 	});
 
 	observer.observe(eltPlot1);
