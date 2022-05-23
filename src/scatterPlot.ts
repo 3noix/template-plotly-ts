@@ -3,16 +3,15 @@ import type {xyData} from "./types";
 
 
 export default function scatterPlot(htmlElt: HTMLElement | null) {
-	// we will update x and y of plotData in the "react" function
+	// we will update x and y of plotData in the "update" function
 	let plotData: Partial<Plotly.PlotData> = {
 		type: "scatter",
 		mode: "lines+markers",
 		hoverinfo: "text"
 	};
 
-	// as const because here the layout does not depends on the x and y values
+	// config and layout will be constant
 	const config: Partial<Plotly.Config> = {responsive: true};
-
 	const layout: Partial<Plotly.Layout> = {
 		title: "Just a dumb title",
 		xaxis: {title: "X axis title"},
@@ -21,7 +20,7 @@ export default function scatterPlot(htmlElt: HTMLElement | null) {
 	};
 
 	// to create or update the plot
-	const react = (data: xyData, color: string): boolean => {
+	const update = (data: xyData, color: string): boolean => {
 		if (htmlElt == null) {return false;}
 
 		plotData = {...plotData,
@@ -35,11 +34,11 @@ export default function scatterPlot(htmlElt: HTMLElement | null) {
 	};
 
 	// to force resizing the plot (only useful if you use Golden Layout)
-	const relayout = () => {
+	const resize = () => {
 		if (htmlElt == null) {return false;}
 		Plotly.relayout(htmlElt, layout);
 		return true;
 	};
 
-	return {react, relayout};
+	return {update, resize};
 }

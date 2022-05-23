@@ -95,12 +95,12 @@ export function appendComponent(addTo: ItemConfig, title: string, id: string, si
 
 // @1: ENSURE RESPONSIVE
 interface Plot {
-	relayout: () => boolean;
+	resize: () => boolean;
 }
 
 export function ensureResponsive(eltsToWatch: HTMLElement[], plots: Plot[]): void {
 	const observer = new ResizeObserver(entries => {
-		plots.forEach(p => p.relayout());
+		plots.forEach(p => p.resize());
 	});
 
 	eltsToWatch.forEach(e => observer.observe(e));
