@@ -95,7 +95,7 @@ export function appendComponent(addTo: ItemConfig, title: string, id: string, si
 
 // @1: ENSURE RESPONSIVE
 interface Plot {
-	resize: () => boolean;
+	resize: () => void;
 }
 
 export function ensureResponsive(eltsToWatch: HTMLElement[], plots: Plot[]): void {

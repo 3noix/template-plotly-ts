@@ -20,8 +20,8 @@ export default function scatterPlot(htmlElt: HTMLElement | null) {
 	};
 
 	// to create or update the plot
-	const update = (data: xyData, color: string): boolean => {
-		if (htmlElt == null) {return false;}
+	const update = (data: xyData, color: string) => {
+		if (htmlElt == null) {return;}
 
 		plotData = {...plotData,
 			x: data.x,
@@ -30,14 +30,12 @@ export default function scatterPlot(htmlElt: HTMLElement | null) {
 		};
 
 		Plotly.react(htmlElt, [plotData], layout, config);
-		return true;
 	};
 
 	// to force resizing the plot (only useful if you use Golden Layout)
 	const resize = () => {
-		if (htmlElt == null) {return false;}
+		if (htmlElt == null) {return;}
 		Plotly.relayout(htmlElt, layout);
-		return true;
 	};
 
 	return {update, resize};
