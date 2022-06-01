@@ -46,6 +46,7 @@ module.exports = {
 	},
 	externals: {
 		"plotly.js-dist-min": "Plotly",
+		"leaflet": "L",
 		"data": "data"
 	}
 };

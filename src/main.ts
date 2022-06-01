@@ -2,6 +2,7 @@ import data from "data";
 import "./styles.scss";
 import * as gl from "./layout";
 import scatterPlot from "./scatterPlot";
+import leafletMap from "./leafletMap";
 
 
 function main(): void {
@@ -29,14 +30,14 @@ function main(): void {
 	// @2: DO PLOTS
 	const plot1 = scatterPlot(eltPlot1);
 	const plot2 = scatterPlot(eltPlot2);
-	const plot3 = scatterPlot(eltPlot3);
+	const plot3 = leafletMap(eltPlot3);
 	plot1.update(data.forPlot1, "#ff0000");
 	plot2.update(data.forPlot2, "#00ff00");
-	plot3.update(data.forPlot3, "#0000ff");
+	plot3.update();
 
 
 	// @2: ACTIVATE RESIZING
-	gl.ensureResponsive([eltPlot1, eltPlot2, eltPlot3], [plot1, plot2, plot3]);
+	gl.ensureResponsive([eltPlot1, eltPlot2, eltPlot3], [plot1, plot2]);
 }
 
 main();
