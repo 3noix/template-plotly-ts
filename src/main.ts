@@ -1,7 +1,7 @@
 import data from "data";
 import "./styles.scss";
 import * as gl from "./layout";
-import scatterPlot from "./scatterPlot";
+import ScatterPlot from "./ScatterPlot";
 
 
 function main(): void {
@@ -27,9 +27,9 @@ function main(): void {
 
 
 	// @2: DO PLOTS
-	const plot1 = scatterPlot(eltPlot1);
-	const plot2 = scatterPlot(eltPlot2);
-	const plot3 = scatterPlot(eltPlot3);
+	const plot1 = new ScatterPlot(eltPlot1);
+	const plot2 = new ScatterPlot(eltPlot2);
+	const plot3 = new ScatterPlot(eltPlot3);
 	plot1.update(data.forPlot1, "#ff0000");
 	plot2.update(data.forPlot2, "#00ff00");
 	plot3.update(data.forPlot3, "#0000ff");
