@@ -1,8 +1,8 @@
 # Concept
 
-This repository is a template for a project whose aim is to generate a standalone files (html, css, js) which displays plots just like in a dashboard. The data is fully contained in one of the js files and can be generated from R.
+This repository is a template for a project whose aim is to generate standalone files (html, css, js) which display one plot. The data is fully contained in one of the js files and can be generated from R.
 
-Hereafter is a screenshot of the result of this demo which uses [Plotly.js](https://plotly.com/javascript/) and [Golden Layout](https://golden-layout.com/). The plots can be resized and moved inside the window with drag and drop.
+Hereafter is a screenshot of the result of this demo which uses [Plotly.js](https://plotly.com/javascript/).
 ![Screenshot](./img-for-readme/result.png)
 
 # Getting started
@@ -19,9 +19,7 @@ library(rjson)
 library(stringr)
 
 data = list(
-	"forPlot1"=list("x"=c(0,1,1), "y"=c(0,1,-1)),
-	"forPlot2"=list("x"=c(0,1,2,3,3,0,3), "y"=c(0,1,1,0,-1,-3,-3)),
-	"forPlot3"=list("x"=c(0,1,1,0,1,1,0), "y"=c(1,1,0,0,0,-1,-1))
+	"forPlot"=list("x"=c(0,1,1), "y"=c(0,1,-1))
 )
 
 dataToJavascript = function(data) {
